@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEG Fukuoka and All Kyushu</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome (アイコン用に追加) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==================================================
+           基本設定・変数
+        ================================================== */
+        :root {
+            --color-primary: #1976D2;   /* メインカラー（青系） */
+            --color-secondary: #FFB300; /* アクセント（黄系） */
+            --color-text: #333333;      /* テキストカラー */
+            --color-bg: #F5F7FA;        /* 背景色 */
+            --color-white: #FFFFFF;
+            --font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+        }
+
+        /* 共通コンテナ */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==================================================
+           ヘッダー・アバウトセクション
+        ================================================== */
+        .header {
+            background-color: var(--color-white);
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #E0E6ED;
+        }
+
+        .header__logo {
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+
+        .header__description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #E3F2FD;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .header__description strong {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+
+        /* ==================================================
+           セクション共通
+        ================================================== */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section__title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section__title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--color-secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ==================================================
+           最新イベント (Latest Event)
+        ================================================== */
+        .latest-event {
+            background-color: var(--color-white);
+        }
+
+        .event-card-main {
+            background-color: var(--color-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+        }
+
+        .event-card-main__img {
+            width: 100%;
+        }
+
+        .event-card-main__content {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        /* ▼▼▼ 追加：詳細情報のスタイル ▼▼▼ */
+        .event-details {
+            text-align: left;
+            margin: 30px 0 40px;
+        }
+
+        .detail-section {
+            margin-bottom: 40px;
+        }
+
+        .detail-title {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* L-1 GP ハイライトボックス */
+        .l1-gp-box {
+            background-color: #FFFDE7;
+            border: 2px solid var(--color-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .l1-gp-box h3 {
+            color: #E65100;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .l1-gp-box p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .l1-gp-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 講師リスト */
+        .speaker-list {
+            list-style: none;
+        }
+        .speaker-list li {
+            background-color: #f9f9f9;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 5px solid var(--color-primary);
+        }
+        .speaker-school {
+            font-size: 0.85rem;
+            color: #666;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .speaker-name {
+            font-weight: bold;
+            font-size: 1.15rem;
+            color: var(--color-text);
+        }
+
+        /* タイムスケジュール */
+        .schedule-list {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            border-top: 1px solid #eee;
+        }
+        .schedule-list dt, .schedule-list dd {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+        .schedule-list dt {
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        .schedule-list dd {
+            margin: 0;
+        }
+
+        /* 会場・アクセス */
+        .access-info p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .map-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9の比率 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* ▲▲▲ 詳細情報のスタイル ここまで ▲▲▲ */
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 15px 40px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(255, 179, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 179, 0, 0.4);
+        }
+
+        /* ==================================================
+           過去のイベント (Past Events)
+        ================================================== */
+        .past-events {
+            background-color: var(--color-bg);
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .event-card {
+            background-color: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ==================================================
+           フッター
+        ================================================== */
+        .footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ==================================================
+           レスポンシブ対応
+        ================================================== */
+        @media (min-width: 768px) {
+            .event-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .header__description {
+                font-size: 1.1rem;
+            }
+            .section__title {
+                font-size: 2.2rem;
+            }
+            .event-card-main__content {
+                padding: 40px;
+            }
+            /* PC表示の時はスケジュールを見やすく調整 */
+            .schedule-list {
+                grid-template-columns: 130px 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .event-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* スマホ時のスケジュール幅調整 */
+            .schedule-list {
+                grid-template-columns: 90px 1fr;
+            }
+            .schedule-list dt {
+                font-size: 0.85rem;
+            }
+            .schedule-list dd {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー＆アバウト -->
+    <header class="header">
+        <div class="container">
+            <img src="https://www.keiai.net/syo/images/logo.jpg" alt="LEG Fukuoka and All Kyushu" class="header__logo">
+            
+            <div class="header__description">
+                <strong>LEG Fukuoka and All Kyushu</strong> は<br>
+                ロイロノートの地域コミュニティーで、年に数回の勉強会を行なっているチームです。<br>
+                ロイロノートをはじめICT機器を有効に活用した<br>
+                生徒・児童主体の教育モデルを共に学んでいます。
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 最新イベント -->
+        <section class="section latest-event">
+            <div class="container">
+                <h2 class="section__title">最新のイベント案内</h2>
+                
+                <div class="event-card-main">
+                    <img src="https://www.keiai.net/syo/images/event_latest.jpg" alt="最新イベント告知" class="event-card-main__img">
+                    
+                    <div class="event-card-main__content">
+                         <!-- ▼▼▼ ボタンエリア（申し込み＆PDF案内状） ▼▼▼ -->
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 10px; margin-bottom: 20px;">
+                            <!-- 申し込みボタン（黄色） -->
+                            <a href="https://forms.gle/R1w1D2BgsAURnNar6" class="btn" target="_blank" rel="noopener">お申し込みはこちら</a>
+                            
+                            <!-- PDFご案内状ボタン（青色） -->
+                            <a href="https://www.keiai.net/syo/images/LEGFUKUOKA2026.pdf" class="btn" target="_blank" rel="noopener" style="background-color: var(--color-primary); box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);">
+                                <i class="far fa-file-pdf" style="margin-right: 5px;"></i>参加ご案内状はこちら
+                            </a>
+                        </div>
+                        <!-- ▲▲▲ ボタンエリア ここまで ▲▲▲ -->
+                        <!-- ▲▲▲ 追加ここまで ▲▲▲ -->
+                        <!-- ▼▼▼ イベント詳細情報 ここから ▼▼▼ -->
+                        <div class="event-details">
+                            
+                            <!-- L-1 Fukuoka GP ハイライト -->
+                            <div class="l1-gp-box">
+                                <h3><i class="fas fa-trophy"></i> L-1 Fukuokaグランプリ</h3>
+                                <p>ロイロノートを活用した授業実践のプレゼンバトルを開催します！✨</p>
+                                <p>実践を4分間でまとめて発表していただける方を募集しています。「発表してみたい！」という方は、申し込みフォームよりエントリーください。</p>
+                                <p style="color: #d32f2f; font-weight: bold; font-size: 0.85rem; margin-top: 10px;">※エントリー数に限りがあります。先着順です。</p>
+								
+                            </div>
+
+                            <!-- 講師紹介 -->
+                          <div class="detail-section">
+                            <h3 class="detail-title"><i class="fas fa-chalkboard-teacher"></i> 登壇講師</h3>
+                              <ul class="speaker-list">
+                                  <li>
+                                      <span class="speaker-school">都留文科大学　教授</span>
+                                      <span class="speaker-name">野中 潤 先生</span>
+                                  </li>
+                                  <li>
+                                      <span class="speaker-school">東奥義塾中学校・高等学校 校長</span>
+                                      <span class="speaker-name">井上 嘉名芽 先生</span>
+                                  </li>
+                                  <li>
+                                      <span class="speaker-school">大商学園高等学校</span>
+                                      <span class="speaker-name">中村 天良 先生</span>
+                                  </li>
+                              </ul>
+                            </div>
+							
+
+                            <!-- タイムスケジュール -->
+                          <div class="detail-section">
+                            <h3 class="detail-title"><i class="far fa-clock"></i> タイムスケジュール</h3>
+                              <dl class="schedule-list">
+                                  <dt>13:00</dt><dd>受付</dd>
+                                  <dt>13:30</dt><dd>開始</dd>
+                                  <dt>13:30〜14:00</dt><dd>オープニング＆Loilo梶原さんアイスブレイク</dd>
+                                  <dt>14:00〜14:30</dt><dd>L-1 Fukuoka GP</dd>
+                                  <dt>14:40〜15:10</dt><dd>講演１</dd>
+                                  <dt>15:20〜15:50</dt><dd>講演２</dd>
+                                  <dt>16:00〜16:30</dt><dd>講演３</dd>
+                                  <dt>16:40〜17:10</dt><dd>分科会　講演１〜３の先生のお話をもっと詳しく聞いてみよう！<br>
+                                  </dd>
+                                  <dt>17:10〜17:30</dt><dd>クロージング</dd>
+                              </dl>
+                            </div>
+
+                          <!-- 会場・アクセス -->
+                            <div class="detail-section">
+                                <h3 class="detail-title"><i class="fas fa-map-marker-alt"></i> 会場・アクセス</h3>
+                                <div class="access-info">
+                                    <p><strong>敬愛小学校</strong><br>〒800-0057 福岡県北九州市門司区大里新町11-7</p>
+                                    
+                                    <div class="map-wrapper" style="margin-bottom: 20px;">
+                                        <iframe src="https://maps.google.com/maps?q=%E6%95%AC%E6%84%9B%E5%B0%8F%E5%AD%A6%E6%A0%A1&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+
+                                    <!-- ▼▼▼ 駐車場・交通機関の情報を追加 ▼▼▼ -->
+                                    <div style="background-color: #f9f9f9; padding: 15px 20px; border-radius: 8px; border-left: 5px solid var(--color-primary);">
+                                        <p style="color: #d32f2f; font-weight: bold; margin-bottom: 12px; font-size: 1.05rem;">
+                                            <i class="fas fa-car" style="margin-right: 5px;"></i> 駐車場はグラウンドを開放します
+                                        </p>
+                                        <p style="font-weight: bold; margin-bottom: 8px;">【公共の交通機関】</p>
+                                        <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.95rem;">
+                                            <li style="margin-bottom: 6px;">
+                                                <i class="fas fa-walking" style="color: #666; width: 20px; text-align: center; margin-right: 5px;"></i> 門司駅から徒歩15分
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-bus" style="color: #666; width: 20px; text-align: center; margin-right: 5px;"></i> （西鉄バス）新町バス停から徒歩3分
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- ▲▲▲ 追加ここまで ▲▲▲ -->
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- ▲▲▲ イベント詳細情報 ここまで ▲▲▲ -->
+
+                        <!-- ▼▼▼ ボタンエリア（申し込み＆PDF案内状） ▼▼▼ -->
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 10px; margin-bottom: 20px;">
+                            <!-- 申し込みボタン（黄色） -->
+                            <a href="https://forms.gle/R1w1D2BgsAURnNar6" class="btn" target="_blank" rel="noopener">お申し込みはこちら</a>
+                            
+                            <!-- PDFご案内状ボタン（青色） -->
+                            <a href="https://www.keiai.net/syo/images/LEGFUKUOKA2026.pdf" class="btn" target="_blank" rel="noopener" style="background-color: var(--color-primary); box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);">
+                                <i class="far fa-file-pdf" style="margin-right: 5px;"></i>参加ご案内状はこちら
+                            </a>
+                        </div>
+                        <!-- ▲▲▲ ボタンエリア ここまで ▲▲▲ -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 過去のイベント -->
+        <section class="section past-events">
+            <div class="container">
+                <h2 class="section__title">過去のイベント</h2>
+                
+                <div class="event-grid">
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past1.jpg" alt="過去のイベント1" loading="lazy"></div>
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past2.jpg" alt="過去のイベント2" loading="lazy"></div>
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past3.jpg" alt="過去のイベント3" loading="lazy"></div>
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past4.jpg" alt="過去のイベント4" loading="lazy"></div>
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past5.jpg" alt="過去のイベント5" loading="lazy"></div>
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past6.jpg" alt="過去のイベント6" loading="lazy"></div>
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past7.jpg" alt="過去のイベント7" loading="lazy"></div>
+                    <div class="event-card"><img src="https://www.keiai.net/syo/images/event_past8.jpg" alt="過去のイベント8" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; LEG Fukuoka and All Kyushu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
