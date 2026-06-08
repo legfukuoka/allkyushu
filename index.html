@@ -137,14 +137,14 @@
             text-align: center;
         }
 
-        /* ▼▼▼ 追加：詳細情報のスタイル ▼▼▼ */
+        /* 詳細情報のスタイル */
         .event-details {
             text-align: left;
             margin: 30px 0 40px;
         }
 
         .detail-section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .detail-title {
@@ -152,7 +152,7 @@
             color: var(--color-primary);
             border-bottom: 2px solid var(--color-primary);
             padding-bottom: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -187,27 +187,126 @@
             margin-bottom: 0;
         }
 
-        /* 講師リスト */
-        .speaker-list {
-            list-style: none;
+        /* ▼▼▼ 追加：講演・講師カードのスタイル ▼▼▼ */
+        .lecture-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
-        .speaker-list li {
-            background-color: #f9f9f9;
+        .lecture-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid #eef2f6;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .lecture-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .lecture-card__header {
+            background: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%);
             padding: 15px 20px;
+            color: #fff;
+        }
+        .lecture-badge {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 3px 12px;
+            border-radius: 50px;
             margin-bottom: 10px;
-            border-radius: 8px;
-            border-left: 5px solid var(--color-primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .lecture-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .lecture-card__body {
+            padding: 20px;
+        }
+        .lecture-speaker {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .speaker-icon {
+            width: 55px;
+            height: 55px;
+            background-color: #E3F2FD;
+            color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .speaker-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .speaker-info {
+            display: flex;
+            flex-direction: column;
         }
         .speaker-school {
             font-size: 0.85rem;
             color: #666;
-            display: block;
             margin-bottom: 3px;
         }
         .speaker-name {
             font-weight: bold;
             font-size: 1.15rem;
             color: var(--color-text);
+        }
+        .lecture-description {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ▼▼▼ 追加：分科会カードのスタイル ▼▼▼ */
+        .workshop-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .workshop-card {
+            background-color: #FFFDE7;
+            border-top: 4px solid var(--color-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+        }
+        .workshop-title {
+            font-size: 1.1rem;
+            color: #E65100;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px dashed #FFE082;
+            padding-bottom: 8px;
+        }
+        .workshop-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* タイムスケジュール */
@@ -250,8 +349,8 @@
             height: 100%;
             border: 0;
         }
-        /* ▲▲▲ 詳細情報のスタイル ここまで ▲▲▲ */
 
+        /* ボタン */
         .btn {
             display: inline-block;
             background-color: var(--color-secondary);
@@ -263,25 +362,20 @@
             box-shadow: 0 4px 10px rgba(255, 179, 0, 0.3);
             transition: transform 0.2s, box-shadow 0.2s;
         }
-
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(255, 179, 0, 0.4);
         }
 
-        /* ==================================================
-           過去のイベント (Past Events)
-        ================================================== */
+        /* 過去のイベント */
         .past-events {
             background-color: var(--color-bg);
         }
-
         .event-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
         }
-
         .event-card {
             background-color: var(--color-white);
             border-radius: 12px;
@@ -289,14 +383,11 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s;
         }
-
         .event-card:hover {
             transform: translateY(-5px);
         }
 
-        /* ==================================================
-           フッター
-        ================================================== */
+        /* フッター */
         .footer {
             background-color: var(--color-primary);
             color: var(--color-white);
@@ -322,9 +413,12 @@
             .event-card-main__content {
                 padding: 40px;
             }
-            /* PC表示の時はスケジュールを見やすく調整 */
             .schedule-list {
                 grid-template-columns: 130px 1fr;
+            }
+            /* PC表示時は分科会カードを3つ横並びに */
+            .workshop-cards {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -335,7 +429,6 @@
         }
         
         @media (max-width: 480px) {
-            /* スマホ時のスケジュール幅調整 */
             .schedule-list {
                 grid-template-columns: 90px 1fr;
             }
@@ -374,19 +467,15 @@
                     <img src="https://www.keiai.net/syo/images/event_latest.jpg" alt="最新イベント告知" class="event-card-main__img">
                     
                     <div class="event-card-main__content">
-                         <!-- ▼▼▼ ボタンエリア（申し込み＆PDF案内状） ▼▼▼ -->
-                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 10px; margin-bottom: 20px;">
-                            <!-- 申し込みボタン（黄色） -->
+                         <!-- 上部ボタンエリア -->
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 10px; margin-bottom: 30px;">
                             <a href="https://forms.gle/R1w1D2BgsAURnNar6" class="btn" target="_blank" rel="noopener">お申し込みはこちら</a>
-                            
-                            <!-- PDFご案内状ボタン（青色） -->
                             <a href="https://www.keiai.net/syo/images/LEGFUKUOKA2026.pdf" class="btn" target="_blank" rel="noopener" style="background-color: var(--color-primary); box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);">
                                 <i class="far fa-file-pdf" style="margin-right: 5px;"></i>参加ご案内状はこちら
                             </a>
                         </div>
-                        <!-- ▲▲▲ ボタンエリア ここまで ▲▲▲ -->
-                        <!-- ▲▲▲ 追加ここまで ▲▲▲ -->
-                        <!-- ▼▼▼ イベント詳細情報 ここから ▼▼▼ -->
+
+                        <!-- イベント詳細情報 -->
                         <div class="event-details">
                             
                             <!-- L-1 Fukuoka GP ハイライト -->
@@ -395,29 +484,143 @@
                                 <p>ロイロノートを活用した授業実践のプレゼンバトルを開催します！✨</p>
                                 <p>実践を4分間でまとめて発表していただける方を募集しています。「発表してみたい！」という方は、申し込みフォームよりエントリーください。</p>
                                 <p style="color: #d32f2f; font-weight: bold; font-size: 0.85rem; margin-top: 10px;">※エントリー数に限りがあります。先着順です。</p>
-								
                             </div>
 
-                            <!-- 講師紹介 -->
-                          <div class="detail-section">
-                            <h3 class="detail-title"><i class="fas fa-chalkboard-teacher"></i> 登壇講師</h3>
-                              <ul class="speaker-list">
-                                  <li>
-                                      <span class="speaker-school">都留文科大学　教授</span>
-                                      <span class="speaker-name">野中 潤 先生</span>
-                                  </li>
-                                  <li>
-                                      <span class="speaker-school">東奥義塾中学校・高等学校 校長</span>
-                                      <span class="speaker-name">井上 嘉名芽 先生</span>
-                                  </li>
-                                  <li>
-                                      <span class="speaker-school">大商学園高等学校</span>
-                                      <span class="speaker-name">中村 天良 先生</span>
-                                  </li>
-                              </ul>
-                            </div>
-							
+                            <!-- ▼▼▼ 講演内容・登壇講師 ▼▼▼ -->
+                            <div class="detail-section">
+                                <h3 class="detail-title"><i class="fas fa-microphone-alt"></i> 講演内容・登壇講師</h3>
+                                <div class="lecture-cards">
+                                    
+                                    <!-- 講演1 -->
+                                    <div class="lecture-card">
+                                        <div class="lecture-card__header">
+                                            <span class="lecture-badge">講演１</span>
+                                            <!-- ↓↓↓ ここに講演タイトルを入力 ↓↓↓ -->
+                                            <h4 class="lecture-title">AI時代の学習指導グランドデザイン―「調べる」の高速化の先にある大学の人文学研究の深まり</h4>
+                                        </div>
+                                        <div class="lecture-card__body">
+                                            <div class="lecture-speaker">
+                                                <!-- 顔写真がある場合は <i class="..."> の代わりに <img src="写真URL"> を入れてください -->
+                                                <div class="speaker-icon"><i class="fas fa-user-tie"></i></div>
+                                                <div class="speaker-info">
+                                                    <span class="speaker-school">都留文科大学 教授</span>
+                                                    <span class="speaker-name">野中 潤 先生</span>
+                                                </div>
+                                            </div>
+                                            <!-- ↓↓↓ ここに講演内容を入力 ↓↓↓ -->
+                                            <p class="lecture-description">
+                                                新しいテクノロジーが登場するたびに「人間がダメになる」と言われてきた歴史をふまえ、生成AIがもたらす変化の本質に迫ります。NHKのサタデーウオッチ９でも取り上げられた都留文科大学での卒論指導や大学院での実践事例を紹介。「AIによって何が圧倒的に高速化し、逆に何が最後まで自動化されないのか」を考えます。単なる効率化を超え、学習者たちのメタ認知や深い学びを育てるために教育が何をなすべきかについてのご提案です。
+「AIを使うと、児童生徒（あるいは自分自身）が考えなくなるのではないか」という不安を抱いている先生方にこそ、ぜひ聴いていただきたいです。生成AIに「認知の肩代わり（オフロード）」をすることで、人間がより本質的な問いに向き合うための新しい学習指導の可能性を、皆さんと一緒に展望したいと思います。
+                                            </p>
+                                        </div>
+                                    </div>
+                                      <!-- 講演2 -->
+                                    <div class="lecture-card">
+                                        <div class="lecture-card__header">
+                                            <span class="lecture-badge">講演2
+									</span>
+                                            <!-- ↓↓↓ ここに講演タイトルを入力 ↓↓↓ -->
+                                          <h4 class="lecture-title">授業における「生徒が使う生成AI実践例」と「先生のための生成AI活用術」<br> 〜ロイロノート連携で実現する、現場のリアルな実践〜</h4>
+                                        </div>
+                                        <div class="lecture-card__body">
+                                            <div class="lecture-speaker">
+                                                <div class="speaker-icon"><i class="fas fa-user-tie"></i></div>
+                                                <div class="speaker-info">
+                                                    <span class="speaker-school">大商学園高等学校</span>
+                                                    <span class="speaker-name">中村 天良 先生</span>
+                                                </div>
+                                            </div>
+                                            <!-- ↓↓↓ ここに講演内容を入力 ↓↓↓ -->
+                                            <p class="lecture-description">
+                                               教育現場での生成AI活用が進む一方で、学校では「生徒に何をさせたら良いか」「使わせる時、どんなことに気をつければ良いか」と悩む声や、「AIを使うことで先生が余計に忙しくなった」という切実な不満も聞こえてきます。
+本セミナーでは、実際に行った授業をもとに、生徒に使わせる目的や安全に安心してAIを使いこなすためのルール、ロイロノートと連携させた具体的な授業実践例をご紹介します。さらに、先生自身の授業準備や校務を効率化し、負担を減らすためのAI活用術もお伝えします。
+先生方が次の日からすぐに自分の授業に取り入れられるような、実践的なヒントをたくさん持って帰っていただける内容です。 
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- 講演3 -->
+                                    <div class="lecture-card">
+                                        <div class="lecture-card__header">
+                                            <span class="lecture-badge">講演3</span>
+                                            <!-- ↓↓↓ ここに講演タイトルを入力 ↓↓↓ -->
+                                            <h4 class="lecture-title">【教師が主導権を握る生成AI】Briskで実現する「安全な生徒のAI活用」と「校務の時短」</h4>
+                                        </div>
+                                      <div class="lecture-card__body">
+                                        <div class="lecture-speaker">
+                                                <div class="speaker-icon"><i class="fas fa-user-tie"></i></div>
+                                                <div class="speaker-info">
+                                                    <span class="speaker-school">東奥義塾中学校・高等学校 校長</span>
+                                                    <span class="speaker-name">井上 嘉名芽 先生</span>
+                                                </div>
+                                          </div>
+                                          <!-- ↓↓↓ ここに講演内容を入力 ↓↓↓ -->
+                                          <p class="lecture-description">
+                                          生成AIの活用が広がる一方で、「新しいツールをまた一から覚え直すのは負担が大きい」「生徒に安全に使わせる仕組みづくりが難しい」という声を多く耳にします。今回ご紹介するBrisk Teachingは、GoogleドキュメントやWeb記事、YouTubeなど、先生方が"今いる場所"でそのまま起動するGoogle Chrome拡張機能型(PCが必要)のAI教育プラットフォームです。 レッスンや課題・クイズの作成から、生徒の作品への即時フィードバック、読解レベルに応じた教材の調整まで、日々の授業準備を支えます。なかでもBrisk Boostは、教師が主導権を保ったまま、生徒が安全にAIを使える環境を実現します。 「AIに任せて高速化できる業務」と「教師だからこそ手放してはいけない判断」をどう切り分けるかを一緒に考えます。生成AIを"試す"段階から"使いこなす"段階へ進みたい先生方に、明日からの確かな一歩をお届けします。 </p>
+                                        </div>
+                                    </div>
 
+                                  
+
+                                </div>
+                            </div>
+                            <!-- ▲▲▲ 講演内容・登壇講師 ここまで ▲▲▲ -->
+
+                          <!-- ▼▼▼ 分科会内容 ▼▼▼ -->
+                            <div class="detail-section">
+                                <h3 class="detail-title"><i class="fas fa-users"></i> 分科会のご案内</h3>
+                                <p style="margin-bottom: 20px; font-size: 0.95rem; color: #444;">
+                                    講演１〜３の先生方のお話をもっと詳しく聞いてみよう！<br>気になるテーマの部屋（分科会）に分かれて、直接質問やディスカッションができる時間です。
+                                </p>
+                                <div class="workshop-cards">
+                                    
+                                    <!-- 分科会1 (野中先生) -->
+                                    <div class="workshop-card">
+                                        <h4 class="workshop-title"><i class="fas fa-comments"></i> 第1分科会</h4>
+                                        <!-- ▼ 追加：分科会タイトル ▼ -->
+                                        <p style="font-weight: bold; color: var(--color-primary); font-size: 1.05rem; margin-bottom: 10px; line-height: 1.5;">
+                                            手書きの温度、AIの速度―すべての校種、すべての教科で使えるふりかえりのニュー・スタンダード
+                                        </p>
+                                        <p style="font-weight: bold; margin-bottom: 15px; font-size: 0.9rem; color: #666;">担当：野中 潤 先生</p>
+                                        <p class="workshop-desc">
+                                            手書きと最新AIのベストミックスを体感する対話型のワークショップです。<br><br>
+                                            参加者の「手書き」による３つの「講演」のふりかえりを出発点に、NotebookLMによる構造化と対話による学びを体験していただきます。<br><br>
+                                            AIの多様な機能がふりかえりの場に速度と密度を与え、学習者の言語活動を豊かにしながら評価の可能性を広げるプロセスをライブで体験します。最新AIを触るのが初めてという先生も、慣れ親しんだ手書き文字でのワークや対話からスタートするので安心です。一緒に楽しみましょう！
+                                        </p>
+                                    </div>
+
+                                    <!-- 分科会2 (井上先生) -->
+                                    <div class="workshop-card">
+                                        <h4 class="workshop-title"><i class="fas fa-comments"></i> 第2分科会</h4>
+                                        <!-- ▼ 追加：分科会タイトル ▼ -->
+                                        <p style="font-weight: bold; color: var(--color-primary); font-size: 1.05rem; margin-bottom: 10px; line-height: 1.5;">
+                                            【教え合いハンズオン】Briskを"自分の端末"で体験してその場で授業準備しよう
+                                        </p>
+                                        <p style="font-weight: bold; margin-bottom: 15px; font-size: 0.9rem; color: #666;">担当：井上 嘉名芽 先生</p>
+                                        <p class="workshop-desc">
+                                            先生方ご自身のPCにBriskをインストール（すでにお使いの方はログイン）し、実際に手を動かしながら進める双方向のワークショップです。<br><br>
+                                            GoogleまたはMicrosoftのアカウントがあれば、すぐに始められます。PCをお持ちでない方も、iPadで体験できる5つの機能をご用意していますので、ご安心ください。<br><br>
+                                            進行は、参加者の皆さんでお互いに教え合いながら、和やかに行いたいと考えています。校種・教科を問わず持ち帰れる活用法を、一緒に楽しみながら見つけましょう。
+                                        </p>
+                                    </div>
+
+                                    <!-- 分科会3 (中村先生) -->
+                                    <div class="workshop-card">
+                                        <h4 class="workshop-title"><i class="fas fa-comments"></i> 第3分科会</h4>
+                                        <!-- ▼ 追加：分科会タイトル ▼ -->
+                                        <p style="font-weight: bold; color: var(--color-primary); font-size: 1.05rem; margin-bottom: 10px; line-height: 1.5;">
+                                            【明日を変える30分ワークショップ】先生のための生成AI活用術 〜実践編〜
+                                        </p>
+                                        <p style="font-weight: bold; margin-bottom: 15px; font-size: 0.9rem; color: #666;">担当：中村 天良 先生</p>
+                                        <p class="workshop-desc">
+                                            「先生のための生成AI活用術」を実際に手元の端末で体験していただく30分のワークショップです。<br><br>
+                                            「AIが便利なのはわかったけれど、いざ自分で使うとなると手が止まってしまう…」という方に向けて、現場ですぐに使える具体的な活用法をご用意しました。<br><br>
+                                            先生方の業務負担を減らし、「明日からの働き方や授業」を少し変えるための第一歩として、実際に体験していただきます。
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- ▲▲▲ 分科会内容 ここまで ▲▲▲ -->
                             <!-- タイムスケジュール -->
                           <div class="detail-section">
                             <h3 class="detail-title"><i class="far fa-clock"></i> タイムスケジュール</h3>
@@ -429,13 +632,12 @@
                                   <dt>14:40〜15:10</dt><dd>講演１</dd>
                                   <dt>15:20〜15:50</dt><dd>講演２</dd>
                                   <dt>16:00〜16:30</dt><dd>講演３</dd>
-                                  <dt>16:40〜17:10</dt><dd>分科会　講演１〜３の先生のお話をもっと詳しく聞いてみよう！<br>
-                                  </dd>
+                                  <dt>16:40〜17:10</dt><dd>分科会<br><small style="color:#666;">講演１〜３の先生のワークショップ！</small></dd>
                                   <dt>17:10〜17:30</dt><dd>クロージング</dd>
                               </dl>
                             </div>
 
-                          <!-- 会場・アクセス -->
+                            <!-- 会場・アクセス -->
                             <div class="detail-section">
                                 <h3 class="detail-title"><i class="fas fa-map-marker-alt"></i> 会場・アクセス</h3>
                                 <div class="access-info">
@@ -445,7 +647,7 @@
                                         <iframe src="https://maps.google.com/maps?q=%E6%95%AC%E6%84%9B%E5%B0%8F%E5%AD%A6%E6%A0%A1&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                     </div>
 
-                                    <!-- ▼▼▼ 駐車場・交通機関の情報を追加 ▼▼▼ -->
+                                    <!-- 駐車場・交通機関の情報 -->
                                     <div style="background-color: #f9f9f9; padding: 15px 20px; border-radius: 8px; border-left: 5px solid var(--color-primary);">
                                         <p style="color: #d32f2f; font-weight: bold; margin-bottom: 12px; font-size: 1.05rem;">
                                             <i class="fas fa-car" style="margin-right: 5px;"></i> 駐車場はグラウンドを開放します
@@ -460,25 +662,20 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- ▲▲▲ 追加ここまで ▲▲▲ -->
                                     
                                 </div>
                             </div>
 
                         </div>
-                        <!-- ▲▲▲ イベント詳細情報 ここまで ▲▲▲ -->
 
-                        <!-- ▼▼▼ ボタンエリア（申し込み＆PDF案内状） ▼▼▼ -->
+                        <!-- 下部ボタンエリア -->
                         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 10px; margin-bottom: 20px;">
-                            <!-- 申し込みボタン（黄色） -->
                             <a href="https://forms.gle/R1w1D2BgsAURnNar6" class="btn" target="_blank" rel="noopener">お申し込みはこちら</a>
-                            
-                            <!-- PDFご案内状ボタン（青色） -->
                             <a href="https://www.keiai.net/syo/images/LEGFUKUOKA2026.pdf" class="btn" target="_blank" rel="noopener" style="background-color: var(--color-primary); box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);">
                                 <i class="far fa-file-pdf" style="margin-right: 5px;"></i>参加ご案内状はこちら
                             </a>
                         </div>
-                        <!-- ▲▲▲ ボタンエリア ここまで ▲▲▲ -->
+
                     </div>
                 </div>
             </div>
